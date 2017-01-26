@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<beans>
+
+    <bean id="expired-content-report-writer" class="com.conexiam.expirable.beans.ExpiredContentReportWriter">
+        <property name="nodeService">
+            <ref bean="NodeService" />
+        </property>
+        <property name="searchService">
+            <ref bean="SearchService" />
+        </property>
+        <property name="contentService">
+            <ref bean="ContentService" />
+        </property>
+        <property name="reportFolderPath">
+            <value>/${spaces.company_home.childname}/${spaces.dictionary.childname}/app:expirable_content_reports</value>
+        </property>
+    </bean>
+
+    <bean id="delete-expired-content" class="com.conexiam.expirable.actions.DeleteExpiredContent" parent="action-executer">
+        <property name="nodeService">
+            <ref bean="NodeService" />
+        </property>
+        <property name="searchService">
+            <ref bean="SearchService" />
+        </property>
+        <property name="reportWriter">
+            <ref bean="expired-content-report-writer" />
+        </property>
+    </bean>
+
+    <bean id="com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJobExecuter"
+          class="com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJobExecuter">
+        <property name="serviceRegistry">
+            <ref bean="ServiceRegistry" />
+        </property>
+    </bean>
+
+    <bean id="com.conexiam.expirable.jobs.deleteExpiredContent.jobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass">
+            <value>com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJob</value>
+        </property>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="jobExecuter">
+                    <ref bean="com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJobExecuter" />
+                </entry>
+                <entry key="jobLockService">
+                    <ref bean="jobLockService" />
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="com.conexiam.expirable.jobs.deleteExpiredContent.trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="com.conexiam.expirable.jobs.deleteExpiredContent.jobDetail" />
+        </property>
+        <property name="cronExpression">
+            <value>${com.conexiam.expirable.jobs.deleteExpiredContent.cronexpression}</value>
+        </property>
+        <property name="startDelay">
+            <value>${com.conexiam.expirable.jobs.deleteExpiredContent.cronstartdelay}</value>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="com.conexiam.expirable.jobs.deleteExpiredContent.trigger"/>
+            </list>
+        </property>
+    </bean>
+</beans>

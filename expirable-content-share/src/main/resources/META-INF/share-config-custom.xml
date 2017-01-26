@@ -1,0 +1,18 @@
+<alfresco-config>
+
+    <config evaluator="aspect" condition="cxme:expirable">
+        <forms>
+  	        <form>
+  	            <field-visibility>
+                    <show id="cxme:expirationDate" for-mode="view" />
+                </field-visibility>
+                <appearance>
+                    <field id="cxme:expirationDate" label-id="prop.cxme_expirationDate" read-only="true">
+                        <control template="/org/alfresco/components/form/controls/date.ftl" />
+                    </field>
+                </appearance>
+            </form>
+        </forms>
+    </config>
+
+</alfresco-config>
