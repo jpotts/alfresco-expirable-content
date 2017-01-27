@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.conexiam</groupId>
     <artifactId>expirable-content-share</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>expirable-content-share AMP project</name>
     <packaging>amp</packaging>
     <description>Manages the lifecycle of the expirable-content-share AMP (Alfresco Module Package)</description>
