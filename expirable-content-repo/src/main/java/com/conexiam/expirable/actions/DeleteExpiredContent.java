@@ -7,6 +7,7 @@ import org.alfresco.model.ContentModel;
 import org.alfresco.repo.action.executer.ActionExecuterAbstractBase;
 import org.alfresco.service.cmr.action.Action;
 import org.alfresco.service.cmr.action.ParameterDefinition;
+import org.alfresco.service.cmr.repository.InvalidNodeRefException;
 import org.alfresco.service.cmr.repository.NodeRef;
 import org.alfresco.service.cmr.repository.NodeService;
 import org.alfresco.service.cmr.repository.StoreRef;
@@ -36,15 +37,23 @@ public class DeleteExpiredContent extends ActionExecuterAbstractBase {
         for (int i = 0; i < expiredDocs.length(); i++) {
             NodeRef expiredDoc = expiredDocs.getNodeRef(i);
 
-            ReportData reportData = new ReportData();
-            reportData.setName((String) nodeService.getProperty(expiredDoc, ContentModel.PROP_NAME));
-            reportData.setNodeRef(expiredDoc.toString());
-            reportData.setExpirationDate((Date) nodeService.getProperty(expiredDoc, ExpirableContentModel.PROP_EXPIRATION_DATE));
-            reportData.setPath(nodeService.getPath(expiredDoc).toString());
+            if (nodeService.exists(expiredDoc)) {
+                ReportData reportData = new ReportData();
+                reportData.setName((String) nodeService.getProperty(expiredDoc, ContentModel.PROP_NAME));
+                String nodeRefStr = expiredDoc.toString();
+                reportData.setNodeRef(nodeRefStr);
+                reportData.setExpirationDate((Date) nodeService.getProperty(expiredDoc, ExpirableContentModel.PROP_EXPIRATION_DATE));
+                reportData.setPath(nodeService.getPath(expiredDoc).toString());
 
-            nodeService.deleteNode(expiredDoc);
+                try {
+                    nodeService.deleteNode(expiredDoc);
+                } catch (InvalidNodeRefException inre) {
+                    LOG.warn("Tried to delete an invalid node, skipping: " + nodeRefStr);
+                    continue;
+                }
 
-            reportDataList.add(reportData);
+                reportDataList.add(reportData);
+            }
         }
         if (reportDataList.size() > 0) {
             LOG.info("Delete expired content action deleted: " + reportDataList.size() + " documents.");

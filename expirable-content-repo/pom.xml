@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.conexiam</groupId>
     <artifactId>expirable-content-repo</artifactId>
-    <version>1.0.0</version>
     <name>expirable-content-repo Repository AMP project</name>
     <packaging>amp</packaging>
     <description>Provides the ability to automatically delete content after a certain date.</description>
@@ -12,7 +11,7 @@
     <parent>
         <groupId>com.conexiam</groupId>
         <artifactId>alfresco-expirable-content</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <!--
