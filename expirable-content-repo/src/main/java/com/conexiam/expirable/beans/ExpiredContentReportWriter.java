@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ExpiredContentReportWriter implements ReportWriter {
+    public static QName NAME = QName.createQName(NamespaceService.ALFRESCO_URI, "expired-content-report-writer");
+
     private static final Logger LOG = LoggerFactory.getLogger(ExpiredContentReportWriter.class);
 
     private SearchService searchService;
