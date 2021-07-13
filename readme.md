@@ -12,8 +12,8 @@ content. By default, the job runs every 5 minutes. To change that, set the follo
 in alfresco-global.properties:
 
     ```
-    com.conexiam.expirable.jobs.deleteExpiredContent.cronexpression=0 0/5 * * * ?
-    com.conexiam.expirable.jobs.deleteExpiredContent.cronstartdelay=240000
+    com.metaversant.expirable.jobs.deleteExpiredContent.cronexpression=0 0/5 * * * ?
+    com.metaversant.expirable.jobs.deleteExpiredContent.cronstartdelay=240000
     ```
 
 Any time the action runs it will write a report that lists what was deleted. The
@@ -28,3 +28,12 @@ Building this project creates two AMPs. One for the repo tier and one for the Sh
 Copy the AMPs to the server into their respective "amps" and "amps_share" directories,
 then use the MMT to install them. For many installations this means switching to
 Alfresco Home then running `bin/apply_amps.sh`.
+
+## A note about older releases
+
+Releases older than 2.0.0 were created on behalf of a sponsor called Conexiam.
+Starting with 2.0.0 the project changed from the conexiam namespace to the
+metaversant namespace. If you have installed a release of this add-on that is
+older than 2.0.0, you'll need to remove the cxme:expirable aspect from all
+nodes *before* installing version 2.0.0. The reason is that when the namespace
+changed the content model changed. The name of the aspect is now mgi:expirable.

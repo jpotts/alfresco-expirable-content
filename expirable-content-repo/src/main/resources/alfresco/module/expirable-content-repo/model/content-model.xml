@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model name="cxme:expirableContentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+<model name="mgi:expirableContentModel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
 
     <description>Expirable Content</description>
     <author>Metaversant Group, Inc., Jeff Potts</author>
@@ -10,14 +10,14 @@
     </imports>
 
     <namespaces>
-        <namespace uri="http://www.conexiam.com/model/expirable/1.0" prefix="cxme"/>
+        <namespace uri="http://www.metaversant.com/model/expirable/1.0" prefix="mgi"/>
     </namespaces>
 
     <aspects>
-      <aspect name="cxme:expirable">
+      <aspect name="mgi:expirable">
         <title>Expirable Content</title>
         <properties>
-          <property name="cxme:expirationDate">
+          <property name="mgi:expirationDate">
             <type>d:datetime</type>
           </property>
         </properties>

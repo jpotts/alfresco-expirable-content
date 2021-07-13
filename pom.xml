@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.conexiam</groupId>
+    <groupId>com.metaversant</groupId>
     <artifactId>alfresco-expirable-content</artifactId>
     <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Alfresco Expirable Content</name>
     <description>Provides the ability to mark content for automatic deletion after an expiration date has passed.</description>
-    <url>https://github.com/conexiam/alfresco-expirable-content</url>
+    <url>https://github.com/jpotts/alfresco-expirable-content</url>
 
     <licenses>
       <license>
@@ -28,9 +28,9 @@
     </developers>
 
     <scm>
-      <connection>scm:git:git://github.com/conexiam/alfresco-expirable-content.git</connection>
-      <developerConnection>scm:git:ssh://github.com:conexiam/alfresco-expirable-content.git</developerConnection>
-      <url>http://github.com/conexiam/alfresco-expirable-content/tree/master</url>
+      <connection>scm:git:git://github.com/jpotts/alfresco-expirable-content.git</connection>
+      <developerConnection>scm:git:ssh://github.com:jpotts/alfresco-expirable-content.git</developerConnection>
+      <url>http://github.com/jpotts/alfresco-expirable-content/tree/master</url>
     </scm>
 
     <properties>

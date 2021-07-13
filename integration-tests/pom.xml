@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>integration-tests</artifactId>
-    <name>Integration Tests Module</name>
+    <name>expirable-content Integration Tests Module</name>
     <description>Integration Tests module for in-container integration testing - part of AIO - SDK 3</description>
     <packaging>jar</packaging> <!-- Note. this just runs Integration Tests, but it needs to be a JAR otherwise
                                             nothing is compiled (i.e. you cannot set it to pom) -->
 
     <parent>
-        <groupId>com.conexiam</groupId>
+        <groupId>com.metaversant</groupId>
         <artifactId>alfresco-expirable-content</artifactId>
         <version>1.0.2-SNAPSHOT</version>
     </parent>
@@ -21,7 +21,7 @@
         <!-- Bring in any custom module that should be tested, by default we bring in the Platform JAR module
              that is generated for the AIO project -->
         <dependency>
-            <groupId>com.conexiam</groupId>
+            <groupId>com.metaversant</groupId>
             <artifactId>expirable-content-repo</artifactId>
             <version>1.0.2-SNAPSHOT</version>
             <scope>test</scope>

@@ -1,4 +1,4 @@
-package com.conexiam.expirable.beans;
+package com.metaversant.expirable.beans;
 
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.content.MimetypeMap;

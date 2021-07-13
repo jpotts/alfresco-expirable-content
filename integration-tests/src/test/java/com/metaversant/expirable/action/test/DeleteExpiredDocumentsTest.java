@@ -1,4 +1,4 @@
-package com.conexiam.expirable.action.test;
+package com.metaversant.expirable.action.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 import java.io.Serializable;
 import java.util.*;
 
-import com.conexiam.expirable.beans.ExpiredContentReportWriter;
-import com.conexiam.expirable.beans.ReportData;
-import com.conexiam.expirable.beans.ReportWriter;
-import com.conexiam.expirable.model.ExpirableContentModel;
+import com.metaversant.expirable.beans.ExpiredContentReportWriter;
+import com.metaversant.expirable.beans.ReportData;
+import com.metaversant.expirable.beans.ReportWriter;
+import com.metaversant.expirable.model.ExpirableContentModel;
 import org.alfresco.model.ContentModel;
 import org.alfresco.rad.test.AbstractAlfrescoIT;
 import org.alfresco.rad.test.AlfrescoTestRunner;
