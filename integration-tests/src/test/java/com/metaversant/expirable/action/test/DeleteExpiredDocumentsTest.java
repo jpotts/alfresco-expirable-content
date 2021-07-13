@@ -54,7 +54,7 @@ public class DeleteExpiredDocumentsTest extends AbstractAlfrescoIT {
         contentProps.put(ContentModel.PROP_NAME, testFolderName);
         NodeRef testFolder = nodeService.createNode(reportsFolder,
                 ContentModel.ASSOC_CONTAINS,
-                QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, testFolderName),
+                QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, QName.createValidLocalName(testFolderName)),
                 ContentModel.TYPE_FOLDER,
                 contentProps).getChildRef();
 
@@ -103,7 +103,7 @@ public class DeleteExpiredDocumentsTest extends AbstractAlfrescoIT {
 
         NodeRef testDoc = nodeService.createNode(testFolder,
                 ContentModel.ASSOC_CONTAINS,
-                QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, testDocName),
+                QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, QName.createValidLocalName(testDocName)),
                 ContentModel.TYPE_CONTENT,
                 contentProps).getChildRef();
 
