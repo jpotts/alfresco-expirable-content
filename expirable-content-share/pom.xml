@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.conexiam</groupId>
+    <groupId>com.metaversant</groupId>
     <artifactId>expirable-content-share</artifactId>
     <name>expirable-content-share AMP project</name>
     <packaging>jar</packaging>
     <description>Manages the lifecycle of the expirable-content-share AMP (Alfresco Module Package)</description>
 
     <parent>
-        <groupId>com.conexiam</groupId>
+        <groupId>com.metaversant</groupId>
         <artifactId>alfresco-expirable-content</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>2.0.0</version>
     </parent>
 
     <properties>

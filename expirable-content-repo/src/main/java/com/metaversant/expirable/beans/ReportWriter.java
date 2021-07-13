@@ -1,8 +1,6 @@
-package com.conexiam.expirable.beans;
+package com.metaversant.expirable.beans;
 
 import org.alfresco.service.cmr.repository.NodeRef;
-import org.alfresco.service.namespace.NamespaceService;
-import org.alfresco.service.namespace.QName;
 
 import java.util.List;
 

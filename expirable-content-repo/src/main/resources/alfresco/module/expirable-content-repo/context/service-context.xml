@@ -18,7 +18,7 @@
 -->
 <beans>
 
-    <bean id="expired-content-report-writer" class="com.conexiam.expirable.beans.ExpiredContentReportWriter">
+    <bean id="expired-content-report-writer" class="com.metaversant.expirable.beans.ExpiredContentReportWriter">
         <property name="nodeService">
             <ref bean="NodeService" />
         </property>
@@ -33,7 +33,7 @@
         </property>
     </bean>
 
-    <bean id="delete-expired-content" class="com.conexiam.expirable.actions.DeleteExpiredContent" parent="action-executer">
+    <bean id="delete-expired-content" class="com.metaversant.expirable.actions.DeleteExpiredContent" parent="action-executer">
         <property name="nodeService">
             <ref bean="NodeService" />
         </property>
@@ -45,21 +45,21 @@
         </property>
     </bean>
 
-    <bean id="com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJobExecuter"
-          class="com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJobExecuter">
+    <bean id="com.metaversant.expirable.jobs.DeleteExpiredContentScheduledJobExecuter"
+          class="com.metaversant.expirable.jobs.DeleteExpiredContentScheduledJobExecuter">
         <property name="serviceRegistry">
             <ref bean="ServiceRegistry" />
         </property>
     </bean>
 
-    <bean id="com.conexiam.expirable.jobs.deleteExpiredContent.jobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
+    <bean id="com.metaversant.expirable.jobs.deleteExpiredContent.jobDetail" class="org.springframework.scheduling.quartz.JobDetailBean">
         <property name="jobClass">
-            <value>com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJob</value>
+            <value>com.metaversant.expirable.jobs.DeleteExpiredContentScheduledJob</value>
         </property>
         <property name="jobDataAsMap">
             <map>
                 <entry key="jobExecuter">
-                    <ref bean="com.conexiam.expirable.jobs.DeleteExpiredContentScheduledJobExecuter" />
+                    <ref bean="com.metaversant.expirable.jobs.DeleteExpiredContentScheduledJobExecuter" />
                 </entry>
                 <entry key="jobLockService">
                     <ref bean="jobLockService" />
@@ -68,22 +68,22 @@
         </property>
     </bean>
 
-    <bean id="com.conexiam.expirable.jobs.deleteExpiredContent.trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <bean id="com.metaversant.expirable.jobs.deleteExpiredContent.trigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail">
-            <ref bean="com.conexiam.expirable.jobs.deleteExpiredContent.jobDetail" />
+            <ref bean="com.metaversant.expirable.jobs.deleteExpiredContent.jobDetail" />
         </property>
         <property name="cronExpression">
-            <value>${com.conexiam.expirable.jobs.deleteExpiredContent.cronexpression}</value>
+            <value>${com.metaversant.expirable.jobs.deleteExpiredContent.cronexpression}</value>
         </property>
         <property name="startDelay">
-            <value>${com.conexiam.expirable.jobs.deleteExpiredContent.cronstartdelay}</value>
+            <value>${com.metaversant.expirable.jobs.deleteExpiredContent.cronstartdelay}</value>
         </property>
     </bean>
 
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-                <ref bean="com.conexiam.expirable.jobs.deleteExpiredContent.trigger"/>
+                <ref bean="com.metaversant.expirable.jobs.deleteExpiredContent.trigger"/>
             </list>
         </property>
     </bean>

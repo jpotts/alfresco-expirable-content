@@ -1,8 +1,8 @@
-package com.conexiam.expirable.actions;
+package com.metaversant.expirable.actions;
 
-import com.conexiam.expirable.beans.ReportData;
-import com.conexiam.expirable.beans.ReportWriter;
-import com.conexiam.expirable.model.ExpirableContentModel;
+import com.metaversant.expirable.beans.ReportData;
+import com.metaversant.expirable.beans.ReportWriter;
+import com.metaversant.expirable.model.ExpirableContentModel;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.action.executer.ActionExecuterAbstractBase;
 import org.alfresco.service.cmr.action.Action;
@@ -68,7 +68,7 @@ public class DeleteExpiredContent extends ActionExecuterAbstractBase {
     }
 
     public ResultSet getExpiredContent() {
-        String query = "ASPECT:\"cxme:expirable\" AND cxme:expirationDate:[MIN to \"" + Instant.now().toString() + "\"]";
+        String query = "ASPECT:\"mgi:expirable\" AND mgi:expirationDate:[MIN to \"" + Instant.now().toString() + "\"]";
         return searchService.query(StoreRef.STORE_REF_WORKSPACE_SPACESSTORE, SearchService.LANGUAGE_FTS_ALFRESCO, query);
     }
 

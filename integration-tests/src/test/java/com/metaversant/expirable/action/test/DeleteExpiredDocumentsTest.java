@@ -1,4 +1,4 @@
-package com.conexiam.expirable.action.test;
+package com.metaversant.expirable.action.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 import java.io.Serializable;
 import java.util.*;
 
-import com.conexiam.expirable.beans.ExpiredContentReportWriter;
-import com.conexiam.expirable.beans.ReportData;
-import com.conexiam.expirable.beans.ReportWriter;
-import com.conexiam.expirable.model.ExpirableContentModel;
+import com.metaversant.expirable.beans.ExpiredContentReportWriter;
+import com.metaversant.expirable.beans.ReportData;
+import com.metaversant.expirable.beans.ReportWriter;
+import com.metaversant.expirable.model.ExpirableContentModel;
 import org.alfresco.model.ContentModel;
 import org.alfresco.rad.test.AbstractAlfrescoIT;
 import org.alfresco.rad.test.AlfrescoTestRunner;
@@ -54,7 +54,7 @@ public class DeleteExpiredDocumentsTest extends AbstractAlfrescoIT {
         contentProps.put(ContentModel.PROP_NAME, testFolderName);
         NodeRef testFolder = nodeService.createNode(reportsFolder,
                 ContentModel.ASSOC_CONTAINS,
-                QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, testFolderName),
+                QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, QName.createValidLocalName(testFolderName)),
                 ContentModel.TYPE_FOLDER,
                 contentProps).getChildRef();
 
@@ -103,7 +103,7 @@ public class DeleteExpiredDocumentsTest extends AbstractAlfrescoIT {
 
         NodeRef testDoc = nodeService.createNode(testFolder,
                 ContentModel.ASSOC_CONTAINS,
-                QName.createQName(NamespaceService.CONTENT_MODEL_PREFIX, testDocName),
+                QName.createQName(NamespaceService.CONTENT_MODEL_1_0_URI, QName.createValidLocalName(testDocName)),
                 ContentModel.TYPE_CONTENT,
                 contentProps).getChildRef();
 
